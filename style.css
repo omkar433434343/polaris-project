@@ -1,3 +1,110 @@
+.body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+}
+
+/* Header Start */
+#header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 80px;
+  background-color: #000000;
+  box-shadow: 0 5px 15px rgba(255, 255, 255, 0.06);
+  z-index: 999;
+  position: sticky;
+  top: 0;
+  left: 0;
+}
+
+#navbar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-left: 60px;
+}
+
+#navbar.active {
+  right: 0px;
+}
+
+#navbar li {
+  list-style: none;
+  padding: 0 20px;
+  position: relative;
+}
+
+#navbar li a {
+  position: relative;
+  text-decoration: none;
+  color: rgb(255, 251, 251);
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 20px;
+  word-spacing: 6px;
+  font-weight: 600;
+}
+
+#navbar li a::after {
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 20px; /* start small */
+  height: 2px;
+  background-color: #ffd0f1;
+  transition: width 0.3s ease;
+}
+
+#navbar li a:hover::after,
+#navbar li a.active::after {
+  width: 100%; /* grow to full underline */
+}
+
+
+#navbar li a i {
+  font-size: 40px;
+}
+
+#mobile {
+  display: none;
+  align-items: center;
+}
+
+#close {
+  display: none;
+}
+
+/* BELT */
+.belt-container {
+  width: calc((180px * 6) + (20px * 5)); /* 6 images + 5 gaps */
+  overflow: hidden;
+  margin: 0 auto;
+  background: #fff;
+  padding: 20px 0;
+}
+.belt-track {
+  display: flex;
+  gap: 20px;
+  will-change: transform;
+}
+.belt-track img {
+  height: 180px;
+  width: auto;
+  flex-shrink: 0;
+  object-fit: contain;
+}
+.belt-track img:hover {
+  transform: scale(1.05);
+}
+@keyframes scrollBelt {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
 * {
     margin: 0;
@@ -8,13 +115,7 @@
 .moveleft{
     right: 20px;
 }
-body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    background: rgb(13, 20, 11);
-}
+
 .container {
     position: relative;
     width: 256px;
@@ -24,7 +125,7 @@ body {
     align-items: center;
 }
 .container span {
-    position: absolute;
+    position: relative;
     left: 0;
     width: 32px;
     height: 6px;
@@ -36,9 +137,10 @@ body {
     animation-delay: calc(var(--i) * (3s / 50));
 }
 .login-box {
-    position: absolute;
+    position: relative;
     width: 400px;
-    margin-right: 100px;
+    top: 20px;
+    margin: 40px auto 0 auto;
 }
 .login-box form {
     width: 100%;
